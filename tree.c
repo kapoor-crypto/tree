@@ -376,7 +376,18 @@ int main(int argc, char **argv)
 	      j = strlen(argv[i])-1;
 	      flag.noreport = (opt_toggle? !flag.noreport : true);
 	      break;
+            }
+	    if (!strcmp("--stat",argv[i])) {
+              j = strlen(argv[i])-1;
+  	      flag.stat = (opt_toggle? !flag.stat : true);
+	      break;
+            }
+	    if (!strcmp("--size",argv[i])) {
+              j = strlen(argv[i])-1;
+  	      flag.size = (opt_toggle? !flag.size : true);
+  	      break;
 	    }
+	    
 	    if (!strcmp("--nolinks",argv[i])) {
 	      j = strlen(argv[i])-1;
 	      flag.nolinks = (opt_toggle? !flag.nolinks : true);

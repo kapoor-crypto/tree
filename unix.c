@@ -82,6 +82,10 @@ int unix_printfile(char *dirname, char *filename, struct _info *file, int descen
   printit(filename);
   if (colored) endcolor();
 
+  if (file && flag.size) {
+    fprintf(outfile, " [%lld bytes]", (long long)file->size);
+  }
+
   if (file) {
     if (flag.hyper) close_hyperlink();
 
@@ -143,6 +147,9 @@ void unix_report(struct totals tot)
   }
   if (flag.d)
     fprintf(outfile,"%ld director%s\n",tot.dirs,(tot.dirs==1? "y":"ies"));
+
   else
     fprintf(outfile,"%ld director%s, %ld file%s\n",tot.dirs,(tot.dirs==1? "y":"ies"),tot.files,(tot.files==1? "":"s"));
+  if (flag.stat)
+    fprintf(outfile, "Directories: %zu, Files: %zu, Depth: %zu\n", tot.dirs, tot.files, tot.depth);
 }

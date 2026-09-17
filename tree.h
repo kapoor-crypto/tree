@@ -96,6 +96,7 @@ struct Flags {
   bool ignorecase, matchdirs, fromfile, metafirst, gitignore, showinfo;
   bool reverse, fflinks, htmloffset, acl, selinux, condense_singletons;
   bool colorize, ansilines, linktargetcolor, remove_space;
+  bool stat, size;
   int flimit, compress_indent;
 };
 
@@ -172,7 +173,9 @@ struct infofile {
 /* list.c */
 struct totals {
   size_t files, dirs;
+  size_t depth;
   off_t size;
+  
 };
 
 struct listingcalls {
